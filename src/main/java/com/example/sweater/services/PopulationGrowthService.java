@@ -1,8 +1,8 @@
-package com.example.sweater.service;
+package com.example.sweater.services;
 
 import com.example.sweater.domain.PopulationGrowth;
 import com.example.sweater.repos.PopulationGrowthRepo;
-import com.example.sweater.service.help_class.GrowthInCountry;
+import com.example.sweater.services.help_class.GrowthInCountry;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;

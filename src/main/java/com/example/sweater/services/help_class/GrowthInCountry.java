@@ -1,4 +1,4 @@
-package com.example.sweater.service.help_class;
+package com.example.sweater.services.help_class;
 
 import java.util.ArrayList;
 import java.util.List;
