@@ -1,24 +1,22 @@
 package com.example.sweater.controller;
 
-import com.example.sweater.domain.PopulationGrowth;
-import com.example.sweater.repos.PopulationGrowthRepo;
+import com.example.sweater.service.PopulationGrowthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
-
 @Controller
 public class MainController {
     @Autowired
-    private PopulationGrowthRepo populationGrowthRepo;
+    private PopulationGrowthService populationGrowthService;
 
     @GetMapping("/form")
-    public String getGrowth(Model model)
+    public String getData(Model model)
     {
-        List<PopulationGrowth> growths = populationGrowthRepo.findAll();
-        model.addAttribute("growths", growths);
+        populationGrowthService.processFindAll();
+        model.addAttribute("years", populationGrowthService.getYears());
+        model.addAttribute("growthInCountry", populationGrowthService.getGrowthInCountry());
         return "index";
     }
 }
