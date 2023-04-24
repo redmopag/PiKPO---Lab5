@@ -11,11 +11,10 @@ import lombok.ToString;
 @Table(name = "processed_data")
 @Data
 @ToString
-public class DataFromDb {
+public class PopulationGrowth {
     @Id
     @Column(name = "id")
     private Integer id;
-
     // Name of countries
     private String country;
     // Year
