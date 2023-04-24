@@ -15,11 +15,17 @@ public class PopulationGrowthService {
     private final List<Integer> years = new ArrayList<>();
     private void processDataList(List<PopulationGrowth> growths)
     {
+        int cnt = 0;
+        while(growths.get(cnt).getCountry() == growths.get(cnt + 1).getCountry()) {
+            years.add(growths.get(cnt).getYear());
+            ++cnt;
+        }
+        years.add(growths.get(cnt).getYear());
+
         for(int i = 0; i < growths.size(); ++i)
         {
             GrowthInCountry tmp = new GrowthInCountry();
             while(growths.get(i).getCountry() == growths.get(i+1).getCountry()) {
-                years.add(growths.get(i).getYear());
                 tmp.addGrowth(growths.get(i).getCount());
                 ++i;
             }
