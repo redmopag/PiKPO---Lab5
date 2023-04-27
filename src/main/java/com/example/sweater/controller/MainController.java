@@ -19,15 +19,6 @@ public class MainController {
         model.addAttribute("years", populationGrowthService.getYears());
         model.addAttribute("growthsInCountries", populationGrowthService.getGrowthsInCountries());
     }
-    /*
-    @GetMapping("/form")
-    public String getData(Model model)
-    {
-        populationGrowthService.processFindAll();
-        setModel(model);
-        return "index";
-    }
-     */
 
     @PostMapping("filter")
     public String filter(@RequestParam String countryName, Model model)

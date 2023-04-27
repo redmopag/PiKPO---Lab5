@@ -18,24 +18,26 @@ public class PopulationGrowthService {
     private final List<Integer> years = new ArrayList<>();
     private void processDataList(List<PopulationGrowth> growths)
     {
-        int cnt = 1;
-        while(Objects.equals(growths.get(cnt).getCountry(), growths.get(cnt - 1).getCountry())) {
-            years.add(growths.get(cnt-1).getYear());
+        if(growths == null || growths.isEmpty())
+            return;
+        int cnt = 0;
+        while(Objects.equals(growths.get(cnt).getCountry(), growths.get(cnt + 1).getCountry())) {
+            years.add(growths.get(cnt+1).getYear());
             ++cnt;
-            if(cnt >= growths.size())
+            if(cnt+1 >= growths.size())
                 break;
         }
 
-        for(int i = 1; i < growths.size(); ++i)
+        for(int i = 0; i < growths.size(); ++i)
         {
             GrowthInCountry tmp = new GrowthInCountry();
-            while(Objects.equals(growths.get(i).getCountry(), growths.get(i - 1).getCountry())) {
-                tmp.addGrowth(growths.get(i-1).getCount());
+            while(Objects.equals(growths.get(i).getCountry(), growths.get(i + 1).getCountry())) {
+                tmp.addGrowth(growths.get(i+1).getCount());
                 ++i;
-                if(i >= growths.size())
+                if(i+1 >= growths.size())
                     break;
             }
-            tmp.setCountry(growths.get(i-1).getCountry());
+            tmp.setCountry(growths.get(i).getCountry());
             growthsInCountries.add(tmp);
         }
     }
@@ -56,8 +58,7 @@ public class PopulationGrowthService {
     {
         clean();
         List<PopulationGrowth> growths = populationGrowthRepo.findByCountry(name);
-        if(growths != null && !growths.isEmpty())
-            processDataList(growths);
+        processDataList(growths);
     }
     public List<GrowthInCountry> getGrowthsInCountries() {return growthsInCountries;}
 
