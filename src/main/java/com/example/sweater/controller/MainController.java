@@ -17,7 +17,7 @@ public class MainController {
     {
         populationGrowthService.processFindAll();
         model.addAttribute("years", populationGrowthService.getYears());
-        model.addAttribute("growthInCountry", populationGrowthService.getGrowthInCountry());
+        model.addAttribute("growthsInCountries", populationGrowthService.getGrowthsInCountries());
         return "index";
     }
 }

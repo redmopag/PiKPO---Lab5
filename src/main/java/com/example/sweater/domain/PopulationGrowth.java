@@ -16,10 +16,13 @@ public class PopulationGrowth {
     @Column(name = "id")
     private Integer id;
     // Name of countries
+    @Column(name = "country")
     private String country;
     // Year
+    @Column(name = "yr")
     private Integer year;
     // Count of thr growth
+    @Column(name = "cnt")
     private Float count;
 
     public Integer getId() {

@@ -15,26 +15,26 @@
             </div>
         </div>
         <div class="body ">
+            <!--
             <div class="flex column-flex">
-                <div class = "textbox flex column-flex">
-                    <input type="number" placeholder="Введите начальный год" class="input-text">
+                <form class = "form flex column-flex" action="/mvc/request/form" th:action="@{/mvc/request/form}" method="post" th:object="${request}">
+                    <input type="number" placeholder="Введите начальный год" class="input-text" th:field="*{countryName}">
                     <input type="submit" value="Поиск" class="input-finish">
-                </div>
+                </form>
             </div>
+            -->
             <div>
                 <table class="table">
                     <tr>
                         <th>
                             Country
                         </th>
-                        <th th:each="year: ${years}">
-                        </th>
+                        <td th:each="year: ${years}" th:text="${year}">
+                        </td>
                     </tr>
-                    <tr th:each="grInCountry: ${growthInCountry}">
-                        <th th:text="grInCountry.country">
-                        </th>
-                        <th th:each="val: ${grInCountry.value}">
-                        </th>
+                    <tr th:each="gin: ${growthsInCountries}">
+                        <td th:text="${gin.getCountry()}"></td>
+                        <td th:each="growth: ${gin.getGrowths()}" th:text="${growth}"></td>
                     </tr>
                 </table>
             </div>
