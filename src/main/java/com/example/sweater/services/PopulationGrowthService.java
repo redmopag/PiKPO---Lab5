@@ -22,6 +22,8 @@ public class PopulationGrowthService {
         while(Objects.equals(growths.get(cnt).getCountry(), growths.get(cnt - 1).getCountry())) {
             years.add(growths.get(cnt-1).getYear());
             ++cnt;
+            if(cnt >= growths.size())
+                break;
         }
 
         for(int i = 1; i < growths.size(); ++i)
@@ -38,12 +40,25 @@ public class PopulationGrowthService {
         }
     }
 
+    private void clean()
+    {
+        years.clear();
+        growthsInCountries.clear();
+    }
     public void processFindAll()
     {
+        clean();
         List<PopulationGrowth> growths = populationGrowthRepo.findAll();
         processDataList(growths);
     }
 
+    public void processFindByCountry(String name)
+    {
+        clean();
+        List<PopulationGrowth> growths = populationGrowthRepo.findByCountry(name);
+        if(growths != null && !growths.isEmpty())
+            processDataList(growths);
+    }
     public List<GrowthInCountry> getGrowthsInCountries() {return growthsInCountries;}
 
     public List<Integer> getYears() {return years;}

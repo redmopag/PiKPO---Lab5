@@ -15,14 +15,12 @@
             </div>
         </div>
         <div class="body ">
-            <!--
             <div class="flex column-flex">
-                <form class = "form flex column-flex" action="/mvc/request/form" th:action="@{/mvc/request/form}" method="post" th:object="${request}">
-                    <input type="number" placeholder="Введите начальный год" class="input-text" th:field="*{countryName}">
+                <form class = "form flex column-flex" method="post" action="filter">
+                    <input type="text" name="countryName" placeholder="Enter country" class="input-text">
                     <input type="submit" value="Поиск" class="input-finish">
                 </form>
             </div>
-            -->
             <div>
                 <table class="table">
                     <tr>
