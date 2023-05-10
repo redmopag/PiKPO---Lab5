@@ -14,8 +14,11 @@ import java.util.Objects;
 public class PopulationGrowthService {
     @Autowired
     private PopulationGrowthRepo populationGrowthRepo;
+    // Список объектов, включающих в себя название страны и список возрастания населения
     private final List<GrowthInCountry> growthsInCountries = new ArrayList<>();
+    // Список лет, включённые в оценку данных
     private final List<Integer> years = new ArrayList<>();
+    // Обработка списка данных взятых с бд
     private void processDataList(List<PopulationGrowth> growths)
     {
         if(growths == null || growths.isEmpty())
